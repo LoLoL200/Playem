@@ -1,0 +1,22 @@
+# Flutter/Dart related
+.dart_tool/
+.packages
+.pub/
+build/
+flutter_*.png
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+.idea/
+.vscode/
+
+# Firebase files
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+
+# User-specific files
+*.log
+
+# Misc
+*.lock

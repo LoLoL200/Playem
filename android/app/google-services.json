@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127908056948",
+    "project_id": "playemdata",
+    "storage_bucket": "playemdata.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127908056948:android:8a1d2e7e4752dd8a97a621",
+        "android_client_info": {
+          "package_name": "com.example.playem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6A7qcZ3ET12i-Yk9uz9hcUlM4-vT4Dik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
