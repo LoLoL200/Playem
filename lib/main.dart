@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:playem/firebase_options.dart';
 import 'package:playem/screen/home_music_screen.dart';
@@ -12,7 +13,9 @@ import 'package:playem/utils/service/notification_music_service.dart';
 import 'package:playem/utils/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
+
+   await dotenv.load();
   // Firebase
   WidgetsFlutterBinding.ensureInitialized();
   final favoriteProvider = FavoriteProvider();
