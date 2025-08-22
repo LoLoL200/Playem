@@ -25,7 +25,8 @@ class MusicApi extends ChangeNotifier {
   ) async {
     final host = await getHost();
     final res = await https.get(
-      Uri.parse('$host/v1/tracks/$trackID?app_name=$appName'),
+      Uri.parse('$host/v2/tracks/$trackID?app_name=$appName'),
+      
     );
     return json.decode(res.body)['data'];
   }

@@ -1,22 +1,44 @@
-# Flutter/Dart related
+# Flutter/Dart
 .dart_tool/
 .packages
 .pub/
 build/
 flutter_*.png
-.flutter-plugins
-.flutter-plugins-dependencies
-.metadata
-.idea/
+
+# Android
+/android/.gradle/
+/android/app/build/
+/android/local.properties
+/android/.idea/
+/android/captures/
+/android/gradle/
+/android/gradlew
+/android/gradlew.bat
+/android/gradle-wrapper.jar
+
+# iOS
+/ios/Pods/
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/App.framework
+/ios/Flutter/engine/
+
+# VS Code
 .vscode/
 
-# Firebase files
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
 
+# Firebase config file
+lib/firebase_options.dart
 
-# User-specific files
-*.log
-
-# Misc
+# Others
 *.lock
+*.log
+*.tmp
+*.swp
+*.DS_Store

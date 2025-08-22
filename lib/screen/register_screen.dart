@@ -125,7 +125,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                             // The form is valid, you can send the data
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Данные обрабатываются...'),
+                                content: Text('Data is being processed...'),
                               ),
                             );
                           }

@@ -122,10 +122,10 @@ class _ProfileScreen extends State<ProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Введите новое имя'),
+        title: Text('Enter a new name'),
         content: TextField(
           controller: nameController,
-          decoration: InputDecoration(hintText: "Новое имя"),
+          decoration: InputDecoration(hintText: "New name"),
         ),
         actions: [
           TextButton(
@@ -135,7 +135,7 @@ class _ProfileScreen extends State<ProfileScreen> {
               });
               await saveProfileData(name: name, imageUrl: null);
               Navigator.pop(context);
-              _showToast("Имя обновлено!");
+              _showToast("Name update!");
             },
             child: Text("Сохранить"),
           ),
