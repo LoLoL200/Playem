@@ -4,6 +4,8 @@ import 'package:playem/screen/offline_music_screen.dart';
 import 'package:playem/screen/online_music_screen.dart';
 import 'package:playem/screen/profile_screen.dart';
 import 'package:playem/utils/service/auth_service.dart';
+import 'package:playem/utils/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeMusicScreen extends StatefulWidget {
   const HomeMusicScreen({super.key});
@@ -43,19 +45,24 @@ class _HomeMusicScreen extends State<HomeMusicScreen> {
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(),
+              decoration: BoxDecoration(color: Colors.red),
 
               // Menu
               child:
-               Column(
+              Center(
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   
                   Text(
                 'Menu ',
-                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                style: Provider.of<ThemeProvider>(context).appBarStyle,
               ),
                 ],
                )
+              )
+              
                
             ),
 
@@ -74,7 +81,7 @@ class _HomeMusicScreen extends State<HomeMusicScreen> {
                         color: const Color.fromARGB(255, 37, 0, 250),
                       ),
                       SizedBox(width: 10),
-                      Text('Profle', style: TextStyle()),
+                      Text('Profle', style: Provider.of<ThemeProvider>(context).style),
                     ],
                   ),
                 ),
@@ -88,7 +95,7 @@ class _HomeMusicScreen extends State<HomeMusicScreen> {
                     children: [
                       Icon(Icons.settings, color: Colors.blueGrey),
                       SizedBox(width: 10),
-                      Text('Settings', style: TextStyle()),
+                      Text('Settings',style: Provider.of<ThemeProvider>(context).style),
                     ],
                   ),
                 ),
@@ -104,8 +111,8 @@ class _HomeMusicScreen extends State<HomeMusicScreen> {
           'assets/images/musik_0.jpg',
           fit: BoxFit.cover,
         ),
-        iconTheme: IconThemeData(),
-        title: Text('Playmuz'),
+       // iconTheme: IconThemeData(),
+        title: Text('Playmuz',style: Provider.of<ThemeProvider>(context).appBarStyle  ,),
         backgroundColor: const Color.fromARGB(255, 199, 74, 2),
       ),
       body: Center(
@@ -117,17 +124,17 @@ class _HomeMusicScreen extends State<HomeMusicScreen> {
                 children: [
                   TextButton(
                     onPressed: () => setState(() => _index = 0),
-                    child: Text('Online music'),
+                    child: Text('Online music' ,style: Provider.of<ThemeProvider>(context).style,),
                   ),
                   SizedBox(width: 24),
                   TextButton(
                     onPressed: () => setState(() => _index = 1),
-                    child: Text('My music (offline)'),
+                    child: Text('My music (offline)' ,style: Provider.of<ThemeProvider>(context).style),
                   ),
                   SizedBox(width: 24),
                   TextButton(
                     onPressed: () => setState(() => _index = 2),
-                    child: Text('Like music list'),
+                    child: Text('Like music list' ,style: Provider.of<ThemeProvider>(context).style),
                   ),
                 ],
               ),

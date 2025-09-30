@@ -25,12 +25,42 @@ class _OnlineMusicScreen extends State<OnlineMusicScreen> {
   //Search controller
   final SearchController controller = SearchController();
 
+   List<Media> allMedia = [];
+   List<Media> filteredMedia = [];
+
   // initState
   @override
   void initState() {
     super.initState();
     playListProvider = Provider.of<PlayListProvider>(context, listen: false);
+    loadMedia();
+
+   
   }
+
+
+
+  
+
+  Future<void> loadMedia() async {
+    allMedia = await musikApi.fetchTrendingMedia('myAppName');
+    filteredMedia = allMedia;
+    setState(() {});
+  }
+
+  // Search music
+  // void searchMusic(String query) async {
+  //   if (query.isNotEmpty) {
+  //     filteredMedia = allMedia
+  //         .where(
+  //           (media) => media.title.toLowerCase().contains(query.toLowerCase()),
+  //         )
+  //         .toList();
+  //   } else {
+  //     filteredMedia = allMedia;
+  //   }
+  //   setState(() {});
+  // }
 
   // Go to Media
   void goToMedia(List<Media> mediaList, int mediaIndex) {
@@ -56,6 +86,40 @@ class _OnlineMusicScreen extends State<OnlineMusicScreen> {
     return Scaffold(
       body: Column(
         children: [
+          SearchAnchor.bar(
+            isFullScreen: false,
+            suggestionsBuilder: (BuildContext context, SearchController controller) {
+              final input = controller.value.text;
+              
+              final results = filteredMedia
+                  .where(
+                    (media) =>
+                        media.title.toLowerCase().contains(input.toLowerCase()),
+                  )
+                  .toList();
+              if(controller.value.text.isEmpty){
+                return [Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text('Nothing found')
+                  )]; 
+              }
+              else{
+                return results.map((media) {
+                return ListTile(
+                  title: Text(media.title),
+                  subtitle: Text(media.artist),
+                  leading: Image.network(media.imageUrl, width: 40, height: 40),
+                  onTap: () {
+                    controller.closeView(media.title);
+                    goToMedia(filteredMedia, filteredMedia.indexOf(media));
+                  },
+                );
+              }).toList();
+              }
+              
+            },
+          ),
+
           SizedBox(height: 10),
           Expanded(
             child: FutureBuilder<List<Media>>(

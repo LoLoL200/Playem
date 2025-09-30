@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:playem/firebase_options.dart';
 import 'package:playem/screen/home_music_screen.dart';
 import 'package:playem/screen/register_screen.dart';
@@ -10,38 +9,39 @@ import 'package:playem/utils/player_provider.dart';
 import 'package:playem/utils/routes.dart';
 import 'package:playem/utils/service/auth_service.dart';
 import 'package:playem/utils/service/notification_music_service.dart';
+import 'package:playem/utils/themes/light_mode.dart';
 import 'package:playem/utils/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
 
-   await dotenv.load();
+ 
   // Firebase
   WidgetsFlutterBinding.ensureInitialized();
   final favoriteProvider = FavoriteProvider();
   // Theme
-  final themeProvider = ThemeProvider();
+  
+  final themeProvider = ThemeProvider(lightMode);
+
+  await dotenv.load(fileName: ".env");
 
   await themeProvider.initTheme();
 
   await favoriteProvider.loadFavorites();
 
   await NotivicationService.init();
+  await Firebase.initializeApp(
+    options: FirebaseEnvOptions.currentPlatform,
+  );
+ 
 
-  // Request permission for notifications
-  if (await Permission.notification.isDenied) {
-    await Permission.notification.request();
-  }
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     // Provider
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => PlayListProvider()),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
-        ChangeNotifierProvider(create: (context) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (context) => favoriteProvider),
         ChangeNotifierProvider(create: (_) => themeProvider),
       ],
       child: MainApp(),

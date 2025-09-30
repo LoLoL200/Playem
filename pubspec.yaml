@@ -25,6 +25,7 @@ dependencies:
   permission_handler: ^11.3.0
   firebase_storage: ^12.4.7
   flutter_dotenv: ^6.0.0
+  sqflite: ^2.4.2
   
   
  
@@ -42,5 +43,6 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-  - assets/images/
-  - assets/audio/
+    - .env
+    - assets/images/
+    - assets/audio/

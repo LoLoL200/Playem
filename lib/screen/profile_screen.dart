@@ -223,6 +223,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                                   name: name,
                                   imageUrl: imageUrl,
                                 );
+                                await loadProfileData();
                                 _showToast("Photo update!!");
                                 setState(() {
                                   _networkImageUrl =
@@ -236,7 +237,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                               _showToast("Please select an image firs");
                             }
                           },
-                          child: Text('Save Foto'),
+                          child: Text('Save Photo'),
                         ),
                         SizedBox(height: 10),
                         ElevatedButton(

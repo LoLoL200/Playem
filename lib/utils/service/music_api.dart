@@ -1,15 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 import 'package:http/http.dart' as https;
 import 'package:playem/utils/media.dart';
 
 class MusicApi extends ChangeNotifier {
-  final String apiKey = dotenv.env['API_KEY'] ?? '';
-  final String apiSecret = dotenv.env['API_SECRET'] ?? '';
+  final String apiKey ="07dd250b94ff05607e6d7f1f6f83f653e4c8ea0c";
+  final String apiSecret = "e8b0ba36a8c3e1980264e298fa8713224a0642600aa4e3b5c91772d96fae949c";
   final String baseUrl = 'https://api.audius.co';
+  
 
   //Give host
   Future<String> getHost() async {
