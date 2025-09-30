@@ -20,8 +20,7 @@ class _ProfileScreen extends State<ProfileScreen> {
   String name = 'User';
   // Email
   final email = AuthService.currentUser?.email;
-  String? _networkImageUrl; // Для URL из Firestore
-
+  String? _networkImageUrl; 
   @override
   void initState() {
     super.initState();
