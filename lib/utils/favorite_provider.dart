@@ -22,7 +22,7 @@ class FavoriteProvider extends ChangeNotifier {
     return _favoriteTracks.any((t) => t.streamUrl == track.streamUrl);
   }
 
-  // Convert Media to Map
+  //  Convert Media to Map
   Map<String, dynamic> mediaToMap(Media track) {
     return {
       'title': track.title,
